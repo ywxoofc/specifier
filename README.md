@@ -7,5 +7,7 @@ I taught myself how to use Lua with a few tutorial videos. Those videos probably
 Recently, I also started learning GUI design. And honestly, the designs I’ve made so far look kinda good (if I do say so myself!).
 
 Want to see more updates and announcements about my scripts? 
+
 Join my Discord server!
+
 👉 discord.gg/MsdBJ924cp
