@@ -173,7 +173,7 @@ Tabs.Main:AddToggle("LevelToggle", {
                         if SelectedLevelingPet then
                             local IsReady = CheckCooldown(SelectedLevelingPet)
                             if IsReady and SupportActive then
-                                task.wait(0.2)
+                                task.wait(0.75)
                                 for _, uuid in pairs(SupportPets) do
                                     if uuid then
                                         PetsService:FireServer("UnequipPet", uuid)
@@ -185,6 +185,7 @@ Tabs.Main:AddToggle("LevelToggle", {
                                 SupportActive = false
                             elseif not IsReady and not SupportActive then
                                 task.wait(5)
+                                task.wait(0.75)
                                 for _, uuid in pairs(SupportPets) do
                                     if uuid then
                                         task.wait(0.5)
@@ -203,6 +204,7 @@ Tabs.Main:AddToggle("LevelToggle", {
         end
     end
 })
+
 
 local UserInputService = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
