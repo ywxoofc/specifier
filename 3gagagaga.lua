@@ -51,7 +51,18 @@ local function MatchesWildcard(name)
     return false
 end
 
-local function GetPetNames()
+local function GetAllPetNames()
+    local names = {}
+    for _, item in ipairs(Backpack:GetChildren()) do
+        if item:GetAttribute("ItemType") == "Pet" then
+            table.insert(names, item.Name)
+        end
+    end
+    table.sort(names, function(a, b) return a:lower() < b:lower() end)
+    return names
+end
+
+local function GetFilteredPetNames()
     local names = {}
     for _, item in ipairs(Backpack:GetChildren()) do
         if item:GetAttribute("ItemType") == "Pet" and MatchesWildcard(item.Name) then
@@ -62,12 +73,13 @@ local function GetPetNames()
     return names
 end
 
-local petNames = GetPetNames()
+local petNamesAll = GetAllPetNames()
+local petNamesFiltered = GetFilteredPetNames()
 
 Tabs.Main:AddDropdown("PetToLevel", {
     Title = "Pet to Level",
     Description = "Select the pet you want to level up",
-    Values = petNames,
+    Values = petNamesAll,
     Multi = false,
     Default = nil,
     Callback = function(Value)
@@ -83,7 +95,7 @@ Tabs.Main:AddDropdown("PetToLevel", {
 Tabs.Main:AddDropdown("LevelingPet", {
     Title = "Leveling Pet",
     Description = "Select the pet with leveling abilities",
-    Values = petNames,
+    Values = petNamesFiltered,
     Multi = false,
     Default = nil,
     Callback = function(Value)
@@ -100,7 +112,7 @@ for i = 1, 6 do
     Tabs.Main:AddDropdown("SupportPet"..i, {
         Title = "Support Pet "..i,
         Description = "Select support pet #"..i,
-        Values = petNames,
+        Values = petNamesFiltered,
         Multi = false,
         Default = nil,
         Callback = function(Value)
