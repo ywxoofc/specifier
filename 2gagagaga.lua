@@ -40,10 +40,21 @@ local UnequipList = {}
 local Backpack = game.Players.LocalPlayer:WaitForChild("Backpack")
 local PetsService = game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("PetsService")
 
+local Wildcards = {"Mimic", "Nihonzaru", "Sloth", "Ascended"}
+
+local function MatchesWildcard(name)
+    for _, pattern in ipairs(Wildcards) do
+        if string.find(name:lower(), pattern:lower()) then
+            return true
+        end
+    end
+    return false
+end
+
 local function GetPetNames()
     local names = {}
     for _, item in ipairs(Backpack:GetChildren()) do
-        if item:GetAttribute("ItemType") == "Pet" then
+        if item:GetAttribute("ItemType") == "Pet" and MatchesWildcard(item.Name) then
             table.insert(names, item.Name)
         end
     end
