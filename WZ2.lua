@@ -2,8 +2,8 @@ local g = getgenv()
 if g._AutoLoader then return end
 g._AutoLoader = true
 
-local MAIN = "https://pastebin.com/raw/rWheMh7E"
-local AUTO = "https://pastebin.com/raw/t2gp6dnU"
+local MAIN = "https://raw.githubusercontent.com/ywxoofc/specifier/refs/heads/main/WZ1.lua"
+local AUTO = "https://raw.githubusercontent.com/ywxoofc/specifier/refs/heads/main/WZ2.lua"
 
 local function safeLoad(url)
     local ok, src = pcall(game.HttpGet, game, url)
