@@ -8,8 +8,8 @@ end
 g._AutoLoader = true
 print("[AutoLoader] Guard gesetzt")
 
-local MAIN = "https://raw.githubusercontent.com/ywxoofc/specifier/refs/heads/main/WZ2.lua"
-local AUTO = "https://raw.githubusercontent.com/ywxoofc/specifier/refs/heads/main/WZ4.lua"
+local MAIN = "https://raw.githubusercontent.com/ywxoofc/specifier/refs/heads/main/WZ3.lua"
+local AUTO = "https://raw.githubusercontent.com/ywxoofc/specifier/refs/heads/main/WZ5.lua"
 
 local function safeLoad(url)
     print("[AutoLoader] Lade:", url)
